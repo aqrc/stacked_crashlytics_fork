@@ -34,7 +34,7 @@ class CrashlyticsService implements InitializableDependency {
     required bool logwarnings,
   }) async {
     try {
-      if (level == Level.error || level == Level.fatal) {
+      if (level == Level.error || level == Level.wtf) {
         await _instance.recordError(
           lines.join('\n'),
           stacktrace,
@@ -49,7 +49,7 @@ class CrashlyticsService implements InitializableDependency {
           printDetails: true,
         );
       }
-      if (level == Level.info || level == Level.trace || level == Level.debug) {
+      if (level == Level.info || level == Level.verbose || level == Level.debug) {
         await _instance.log(lines.join('\n'));
       }
     } catch (exception) {
